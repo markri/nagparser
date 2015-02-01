@@ -8,6 +8,23 @@ into PHP objects with getters for all options (easiness of autocompletion).
 Currently it doesnt parse relations between definitions (yet).
 
 
+Usage example
+=============
+
+A little code example to fetch all service definitions from config
+
+    <?php
+
+    include 'vendor/autoload.php';
+
+    $parser = new NagParser\Parser('/usr/local/nagios/etc');
+    $parser->parse();
+
+    $checkServices = $parser->getServiceDefinitions();
+
+    // ... Whatever you want to with found definitions
+
+
 Why?
 ====
 I wanted easy Nagios CFG editing, without repeated configs. So I came up with this parser to read all available services in order
