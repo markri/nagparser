@@ -38,7 +38,7 @@ class Parser
      */
     private function removeComments()
     {
-        $this->content = preg_replace('/#.*/', '', $this->content);
+        $this->content = preg_replace('/[#;].*/', '', $this->content);
     }
 
     /**
