@@ -45,7 +45,7 @@ class CfgCollector
 
         $content = '';
         foreach ($this->paths as $path) {
-            $content.= file_get_contents($path);
+            $content.= file_get_contents($path) . "\n";
         }
 
         $this->mergedContent = $content;
