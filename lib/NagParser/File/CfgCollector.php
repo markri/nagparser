@@ -24,7 +24,7 @@ class CfgCollector
         $directoryIterator = new \RecursiveDirectoryIterator($directory);
         $iterator = new \RecursiveIteratorIterator($directoryIterator);
 
-        $cfgFiles = new \RegexIterator($iterator, sprintf('#^%s/.+/.+\.cfg$#i', $directory), \RecursiveRegexIterator::GET_MATCH);
+        $cfgFiles = new \RegexIterator($iterator, '#.+\.cfg$#i', \RecursiveRegexIterator::GET_MATCH);
 
         foreach($cfgFiles as $cfgFile){
             $this->paths[] = $cfgFile[0];
