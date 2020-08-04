@@ -81,7 +81,7 @@ class Parser
             /**
              * @var Definition $definition
              */
-            if ($definition->getType() == $type) {
+            if ($definition->getType() == $type && $definition->getRegister() != "0") {
                 $return[] = $definition;
             }
         }

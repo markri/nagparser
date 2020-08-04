@@ -26,6 +26,7 @@ abstract class Definition
         if (array_key_exists($option, $this->config)) {
             return $this->config[$option];
         }
+        return null;
     }
 
     /**
@@ -42,6 +43,22 @@ abstract class Definition
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUse()
+    {
+        return $this->getOption("use");
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegister()
+    {
+        return $this->getOption("register");
     }
 
 }
