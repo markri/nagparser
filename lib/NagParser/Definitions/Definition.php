@@ -26,6 +26,7 @@ abstract class Definition
         if (array_key_exists($option, $this->config)) {
             return $this->config[$option];
         }
+        return null;
     }
 
     /**
