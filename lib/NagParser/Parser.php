@@ -13,16 +13,27 @@ class Parser
 
     /**
      * @param string $directory
+     * @param array $additionalDirectories
      */
-    public function __construct($directory)
-    {
-        if (!file_exists($directory)) {
-            throw new \InvalidArgumentException(sprintf('Root dir %s doesnt exist', $directory));
-        }
+	public function __construct($directory, array $additionalDirectories = null)
+	{
+		$directories = array();
+		if (is_array($additionalDirectories))
+		{
+			$directories = array_merge($directories, $additionalDirectories);
+		}
 
-        $cfgCollector = new CfgCollector($directory);
-        $this->content = $cfgCollector->getMergedContent();
-    }
+		array_push($directories, $directory);
+
+		foreach ($directories as $dir)
+		{
+			if (!file_exists($dir))
+				throw new \InvalidArgumentException(sprintf('Root dir %s doesnt exist', $dir));
+		}
+
+		$cfgCollector = new CfgCollector($directories);
+		$this->content = $cfgCollector->getMergedContent();
+	}
 
     /**
      *
