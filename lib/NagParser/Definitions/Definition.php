@@ -45,4 +45,20 @@ abstract class Definition
         return $this->type;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUse()
+    {
+        return $this->getOption("use");
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegister()
+    {
+        return $this->getOption("register");
+    }
+
 }
