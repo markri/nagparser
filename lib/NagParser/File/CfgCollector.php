@@ -16,20 +16,24 @@ class CfgCollector
     private $mergedContent;
 
     /**
-     * Enter nagios config directory e.g. /usr/local/nagios/etc
-     * @param string $directory
+     * Enter nagios config directory/directories e.g. /usr/local/nagios/etc
+     * @param array $directories
      */
-    public function __construct($directory)
-    {
-        $directoryIterator = new \RecursiveDirectoryIterator($directory);
-        $iterator = new \RecursiveIteratorIterator($directoryIterator);
+	public function __construct($directories)
+	{
+		foreach ($directories as $directory)
+		{
+			$directoryIterator = new \RecursiveDirectoryIterator($directory);
+			$iterator = new \RecursiveIteratorIterator($directoryIterator);
 
-        $cfgFiles = new \RegexIterator($iterator, '#.+\.cfg$#i', \RecursiveRegexIterator::GET_MATCH);
+			$cfgFiles = new \RegexIterator($iterator, '#.+\.cfg$#i', \RecursiveRegexIterator::GET_MATCH);
 
-        foreach($cfgFiles as $cfgFile){
-            $this->paths[] = $cfgFile[0];
-        }
-    }
+			foreach ($cfgFiles as $cfgFile)
+			{
+				$this->paths[] = $cfgFile[0];
+			}
+		}
+	}
 
 
     /**
