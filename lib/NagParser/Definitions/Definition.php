@@ -16,9 +16,9 @@ abstract class Definition
 
     private function parseConfig($config)
     {
-		$config = preg_replace('/\s*\\\[\n\r]\s*/', '', $config);
+        $config = preg_replace('/\s*\\\[\n\r]\s*/', '', $config);
         preg_match_all('/^\s*(.+?)\s+(.+)$/m', $config, $matches);
-		$matches[2] = array_map('trim', $matches[2]);
+        $matches[2] = array_map('trim', $matches[2]);
         $this->config = array_combine($matches[1], $matches[2]);
     }
 
